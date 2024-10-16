@@ -15,10 +15,7 @@ module MyCoin4::MyCoin4 {
         // mint 1000 coins to the sender
         coin::register<MyCoin4>(sender);
         aptos_framework::managed_coin::mint<MyCoin4>(sender, signer::address_of(sender), 1000000000000000);
-    }
-
-    entry fun mint_my_coin2(sender: &signer, amount: u64) {
-        aptos_framework::managed_coin::mint<MyCoin4>(sender, signer::address_of(sender), amount);
+        aptos_framework::managed_coin::destroy_caps<MyCoin4>(sender);
     }
 }
 
